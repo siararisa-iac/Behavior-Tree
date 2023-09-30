@@ -43,4 +43,14 @@ public class PlayerHunger : MonoBehaviour
         //    OnHungerUpdate(Hunger, MaxHunger);
         //}
     }
+
+    public void IncreaseHunger(float value)
+    {
+        hunger += value;
+    }
+
+    public bool IsHungry()
+    {
+        return (Hunger <= (maxHunger / 2));
+    }
 }
