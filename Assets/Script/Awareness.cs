@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Panda;
 public class Awareness : MonoBehaviour
 {
     [SerializeField]
@@ -23,6 +23,11 @@ public class Awareness : MonoBehaviour
         return false;
     }
 
+    [Task]
+    public void IsNearEnemies()
+    {
+        Task.current.Complete(IsEnemyAround());
+    }
     private void Update()
     {
         IsEnemyAround();

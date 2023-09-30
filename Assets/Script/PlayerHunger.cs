@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Panda;
 
 public class PlayerHunger : MonoBehaviour
 {
@@ -52,5 +53,25 @@ public class PlayerHunger : MonoBehaviour
     public bool IsHungry()
     {
         return (Hunger <= (maxHunger / 2));
+    }
+
+    [Task]
+    public void CheckHunger()
+    {
+        if (IsHungry())
+        {
+            Task.current.Succeed();
+        }
+        else
+        {
+            Task.current.Fail();
+        }
+    }
+
+    [Task]
+    private void Eat()
+    {
+        IncreaseHunger(20);
+        Task.current.Succeed();
     }
 }
